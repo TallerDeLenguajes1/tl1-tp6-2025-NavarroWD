@@ -1,4 +1,4 @@
-﻿Console.WriteLine("=== Calculadora V2 ===");
+﻿Console.WriteLine("=== Calculadora V2 2.0 ===");
 
 double numero = pedirNumero("Ingrese un numero. \n");
 
