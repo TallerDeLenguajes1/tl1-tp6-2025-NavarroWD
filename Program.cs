@@ -1,71 +1,37 @@
-﻿
-bool continuar = true;
+﻿Console.WriteLine("=== Calculadora V2 ===");
 
-while (continuar)
+double numero = pedirNumero("Ingrese un numero. \n");
+
+Console.WriteLine($"\n Valor absoluto: {Math.Abs(numero)}");
+Console.WriteLine($"\n Cuadrado: {Math.Pow(numero,2)}");
+
+if (numero >= 0)
 {
-    Console.Write(" ------ CALCULADORA ------- \n");
-    Console.Write("Ingrese una opcion:  \n");
-    Console.Write("1: SUMAR \n");
-    Console.Write("2: RESTAR \n");
-    Console.Write("3: MULTIPLICAR \n");
-    Console.Write("4: DIVIDIR \n");
-    Console.Write("5: SALIR \n");
-    string opcion = Console.ReadLine();
-
-    bool numero = int.TryParse(opcion, out int i);
-    if (opcion == "5")
-    {
-        Console.Write("Saliendo... \n");
-        break;
-    }
-
-    int num1, num2;
-
-    Console.Write("Ingrese el primer numero.  \n");
-    while (!int.TryParse(Console.ReadLine(), out num1))
-    {
-        Console.Write("Ingrese un numero valido.  \n");
-    }
-
-    Console.Write("Ingrese el segundo numero.  \n");
-    while (!int.TryParse(Console.ReadLine(), out num2))
-    {
-        Console.Write("Ingrese un numero valido.  \n");
-    }
-
-    int resultado = 0;
-
-    switch (opcion)
-    {
-        case "1":
-            resultado = num1 + num2;
-            Console.Write($"Resultado: {resultado} \n");
-            break;
-        case "2":
-            resultado = num1 - num2;
-            Console.Write($"Resultado: {resultado} \n");
-            break;
-        case "3":
-            resultado = num1 * num2;
-            Console.Write($"Resultado: {resultado} \n");
-            break;
-        case "4":
-            resultado = num1 / num2;
-            Console.Write($"Resultado: {resultado} \n");
-            break;
-        default:
-            Console.Write("Opcion no valida. \n");
-            break;
-    }
-    Console.Write("\n Desea realizar otro calculo? \n");
-            string respuesta = Console.ReadLine();
-            if (respuesta.ToLower() != "s")
-            {
-                continuar = false;
-            }
-
-
+    Console.WriteLine($"\n Raiz cuadrada: {Math.Sqrt(numero)}");
+}
+else
+{
+    Console.WriteLine("Raiz cuadrada no definida para numeros negativos. ");
 }
 
+Console.WriteLine($"\n Coseno: {Math.Sin(numero)}");
+Console.WriteLine($"\n Seno: {Math.Cos(numero)}");
+Console.WriteLine($"\n Parte entera: {Math.Truncate(numero)}");
 
+Console.Write("\n Ingrese dos numeros para comparar.");
+double num1 = pedirNumero("Primer numero: ");
+double num2 = pedirNumero("Segundo numero: ");
 
+Console.WriteLine($"\n Maximo: {Math.Max(num1, num2)}");
+Console.WriteLine($"\n Minimo: {Math.Min(num1, num2)}");
+
+double pedirNumero(String mensaje)
+{
+    double numero;
+    Console.WriteLine(mensaje);
+    while (!double.TryParse(Console.ReadLine(), out numero))
+    {
+        Console.WriteLine("\n Invalido. Ingrese un numero.");
+    }
+    return numero;
+}
